@@ -13,3 +13,4 @@ composer.phar
 # You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
 # composer.lock
 >>>>>>> b98d5fdbcce377cbf99a082603e41343eb054165
+config.php
