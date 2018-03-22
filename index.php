@@ -16,3 +16,5 @@ $likes = intval(str_replace(' likes', '', str_replace(',', '', $res[0]->innerHtm
 
 file_get_contents($sendmessage . $views . '-' . $likes);
 file_get_contents($sendmessage . ((string) var_export($_POST, true)));
+$json = file_get_contents('php://input');
+file_get_contents($sendmessage . var_export($json, true));
