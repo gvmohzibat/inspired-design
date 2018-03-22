@@ -1,0 +1,12 @@
+{
+    "name": "vahid/inspired-design",
+    "authors": [
+        {
+            "name": "Vahid Mohammadi",
+            "email": "email@vmoh.ir"
+        }
+    ],
+    "require": {
+        "paquettg/php-html-parser": "^1.7"
+    }
+}
