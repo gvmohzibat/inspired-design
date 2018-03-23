@@ -69,23 +69,19 @@ try {
     $sendmessage = $boturl . 'sendMessage?chat_id=' . $admin_id . '&text=';
 
     $json = json_decode(file_get_contents('php://input'), true);
-    var_export($json);
+    // var_export($json);
 
     $dom->loadFromUrl($json['url']);
     $likes = getLikes();
     $views = getViews();
-    var_export($views);
-    // echo $likes . ' - ' . $views;
 
     $chatID = $admin_id;
-    // if ($likes > 200 || $views > 2000) {
-    //     $chatID = $channel_id;
-    // }
+    if ($likes > 200 || $views > 2000) {
+        $chatID = $channel_id;
+    }
     $titleStr = '🔅 <a href="' . $json['url'] . '">' . $json['title'] . '</a>';
-    // $titleStr = 'v';
-    var_export($views);
-    $likeStr = '👍 Likes: ' . $likes;
-    $viewStr = '👀 Views: ' . $views;
+    $likeStr = trim('👍 Likes: ' . $likes);
+    $viewStr = trim('👀 Views: ' . $views);
     $idStr = '💠 @inspired_design';
     $caption = $titleStr . PHP_EOL . $likeStr . PHP_EOL . $viewStr . PHP_EOL . $idStr;
 
@@ -103,7 +99,7 @@ try {
         'chat_id' => $chatID,
         'photo' => InputFile::create($json['image'], 't.me/inspired_design.jpg'),
         'caption' => $caption,
-        'parse_mode' => 'HTML',
+        'parse_mode' => 'html',
     ];
     var_export($sMessage);
     $telegram->sendPhoto($sMessage);
