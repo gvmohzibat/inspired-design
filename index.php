@@ -12,7 +12,7 @@ use Telegram\Bot\FileUpload\InputFile;
 $telegram = new Api($token);
 
 if (isset($_GET['debug'])) {
-    log_debug($_GET['debug']);
+    dbg($_GET['debug']);
 }
 
 function getLikes()
@@ -39,7 +39,7 @@ function make_exception_array($e)
         'trace' => $e->getTraceAsString(),
     ];
 }
-function log_debug($data, $chat_id = 92454)
+function dbg($data, $chat_id = 92454)
 {
     $text = var_export($data, true);
     global $telegram;
@@ -55,16 +55,17 @@ try {
     $sendmessage = $boturl . 'sendMessage?chat_id=' . $admin_id . '&text=';
 
     $json = json_decode(file_get_contents('php://input'), true);
-    log_debug($json);
+    // dbg($json);
 
     $dom->loadFromUrl($json['url']);
     $likes = getLikes();
     $views = getViews();
 
-    $chatID = $admin_id;
-    if ($likes > 150 || $views > 1000) {
-        $chatID = $channel_id;
-    }
+    $chatID = $channel_id;
+    // $chatID = $admin_id;
+    // if ($likes > 150 || $views > 1000) {
+    //     $chatID = $channel_id;
+    // }
     $titleStr = '🔅 ' . $json['title'];
     $likeStr = trim('👍 Likes: ' . $likes);
     $viewStr = trim('👀 Views: ' . $views);
@@ -87,10 +88,12 @@ try {
         'caption' => $caption,
         // 'parse_mode' => 'html',
     ];
-    var_export($sMessage);
-    $telegram->sendPhoto($sMessage);
+    // var_export($sMessage);
+    if ($likes > 150 || $views > 1000) {
+        $telegram->sendPhoto($sMessage);
+    }
 
 } catch (Exception $e) {
-    log_debug(make_exception_array($e));
+    dbg(make_exception_array($e));
 }
 // }
