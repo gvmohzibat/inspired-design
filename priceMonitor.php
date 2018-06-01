@@ -30,11 +30,6 @@ function dbg($data, $chat_id = 92454)
     ]);
 }
 
-$telegram->sendMessage([
-    'chat_id' => 92454,
-    'text' => 'vahid',
-]);
-
 try {
     $urls = [
         'http://torob.com/p/254b8b34-1e0c-40b2-830e-ad49705ee9fb/%DA%AF%D9%88%D8%B4%DB%8C-%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D9%87%D9%88%D8%A7%D9%88%DB%8C-%D9%85%D8%AF%D9%84-mate-10-alp-l29-%D8%AF%D9%88-%D8%B3%DB%8C%D9%85-%DA%A9%D8%A7%D8%B1%D8%AA/',
@@ -54,8 +49,12 @@ try {
 
         foreach ($div as $d) {
             if ($d->getAttribute('type') == 'application/ld+json') {
-                dbg(json_decode($d->textContent, true)['offers']['lowPrice']);
-                dbg(json_decode($d->textContent, true)['offers']['price']);
+                $json = json_decode($d->textContent, true);
+                $price = null;
+                if ($json['offers']['lowPrice']) {$price = $json['offers']['lowPrice'];}
+                if ($json['offers']['lowPrice']) {$price = $json['offers']['price'];}
+                $text = $json['name'] . ' : ' . $price;
+                $telegram->sendMessage(['chat_id' => 92454, 'text' => $text]);
             }
         }
     }
