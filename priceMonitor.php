@@ -33,7 +33,9 @@ function dbg($data, $chat_id = 92454)
 try {
     $urls = [
         'http://torob.com/p/254b8b34-1e0c-40b2-830e-ad49705ee9fb/%DA%AF%D9%88%D8%B4%DB%8C-%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D9%87%D9%88%D8%A7%D9%88%DB%8C-%D9%85%D8%AF%D9%84-mate-10-alp-l29-%D8%AF%D9%88-%D8%B3%DB%8C%D9%85-%DA%A9%D8%A7%D8%B1%D8%AA/',
-        'https://www.digikala.com/Product/DKP-32334/',
+        'http://torob.com/p/7fc8f00b-0180-4cf8-acb0-87b7c894c36d/%DA%AF%D9%88%D8%B4%DB%8C-%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D9%87%D9%88%D8%A7%D9%88%DB%8C-%D9%85%D8%AF%D9%84-p20-lite-%D8%AF%D9%88-%D8%B3%DB%8C%D9%85-%DA%A9%D8%A7%D8%B1%D8%AA-%D8%B8%D8%B1%D9%81%DB%8C%D8%AA-64-%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA/',
+        'https://www.digistyle.com/product/%D8%AA%DB%8C-%D8%B4%D8%B1%D8%AA-%D8%A2%D8%B3%D8%AA%DB%8C%D9%86-%D8%A8%D9%84%D9%86%D8%AF-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87-69120',
+        'https://www.digistyle.com/product/%D8%AA%DB%8C-%D8%B4%D8%B1%D8%AA-%D8%A2%D8%B3%D8%AA%DB%8C%D9%86-%D8%A8%D9%84%D9%86%D8%AF-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87-69103',
     ];
 
     foreach ($urls as $url) {
