@@ -51,8 +51,8 @@ try {
             if ($d->getAttribute('type') == 'application/ld+json') {
                 $json = json_decode($d->textContent, true);
                 $price = null;
-                if ($json['offers']['lowPrice']) {$price = $json['offers']['lowPrice'];}
-                if ($json['offers']['lowPrice']) {$price = $json['offers']['price'];}
+                if (array_key_exists('lowPrice', $json['offers'])) {$price = $json['offers']['lowPrice'];}
+                if (array_key_exists('price', $json['offers'])) {$price = $json['offers']['price'];}
                 $text = $json['name'] . ' : ' . $price;
                 var_export($json);
                 $telegram->sendMessage(['chat_id' => 92454, 'text' => $text]);
