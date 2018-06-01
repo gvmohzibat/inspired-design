@@ -53,9 +53,12 @@ try {
                 $price = null;
                 if (array_key_exists('lowPrice', $json['offers'])) {$price = $json['offers']['lowPrice'];}
                 if (array_key_exists('price', $json['offers'])) {$price = $json['offers']['price'];}
-                $text = $json['name'] . ' : ' . $price;
+                $name = $json['alternateName'];
+                $text = $name . ' : ' . $price;
                 var_export($json);
-                $telegram->sendMessage(['chat_id' => 92454, 'text' => $text]);
+                if ($price && $name) {
+                    $telegram->sendMessage(['chat_id' => 92454, 'text' => $text]);
+                }
             }
         }
     }
