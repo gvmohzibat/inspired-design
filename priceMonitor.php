@@ -57,7 +57,7 @@ try {
                 if (array_key_exists('price', $json['offers'])) {$price = $json['offers']['price'];}
                 $name = $json['alternateName'];
                 $text = $name . ' : ' . $price;
-                var_export($json);
+                // var_export($json);
                 if ($price && $name) {
                     $telegram->sendMessage(['chat_id' => 92454, 'text' => $text]);
                 }
